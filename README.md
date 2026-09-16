@@ -66,12 +66,12 @@ elmo-hikes/
 
 
 ## Contributors
-<<<<<<< HEAD
+
 - **MD Ehsanul Bari** - BCIT CST Student who loves playing soccer and loves going out with friends.
-=======
+
 - **Aidan Mah** - BCIT CST Student who enjoys computers and film. Fun fact: Can solve Rubik's Cubes in under a minute.
->>>>>>> develop
-- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+
+- **Sam Su** - BCIT CST Student with a passion for working out and watching animation. Fun fact: Loves solving Rubik's Cubes in under a minute.
 
 ---
 
