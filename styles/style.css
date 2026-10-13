@@ -1,1 +1,19 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
 
+.navbar {
+    padding: 20px;
+    background-color: #f3eadf;
+}
+
+.navbar a {
+    color: #333333;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
