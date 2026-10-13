@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
+    <title>Memories Box</title>
     <meta name="comp1800 template" content="My 1800 App">
 
     <!-- Required meta tags -->
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Other libraries go here -->
-
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 
 <body>
@@ -19,17 +19,32 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-<section class="hero">
-    <h1>Welcome to Our Time Capsule!</h1>
-    <p>Step into the past and explore the memories.</p>
-    <a href="#about">Get Started</a>
-</section>
+
+    <header>
+        <nav class="navbar">
+            <a href="./index.html">Home</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to Our Time Capsule!</h1>
+        <p>Step into the past and explore the memories.</p>
+        <a href="#about">Get Started</a>
+    </section>
+
+    <section class="cta-section py-5 text-center">
+        <div class="text-center py-5">
+            <a href="#" class="btn btn-primary">Sign Up</a>
+            <a href="#" class="btn btn-outline-primary">Log In</a>
+        </div>
+    </section>
+
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
-    <!-- <script type="module" src="./src/main.js"></script> -->
+    <script type="module" src="./src/main.js"></script>
 
 </body>
 
