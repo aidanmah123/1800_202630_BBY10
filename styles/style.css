@@ -17,3 +17,13 @@ body {
 .navbar a:hover {
     text-decoration: underline;
 }
+
+.btn-primary, .btn-outline-primary{
+    margin-top: 50px;
+    padding: 20px;
+    background: #00b36b;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}
