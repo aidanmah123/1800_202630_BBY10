@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Memories Box</title>
+    <meta name="comp1800 template" content="My 1800 App">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Other libraries go here -->
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
+    <!-- Stuff for body goes here -->
+
+    <header>
+        <nav class="navbar">
+            <a href="./index.html">Home</a>
+        </nav>
+    </header>
+
+    <section class="container my-5" style="max-width: 600px;">
+        <div class="card bg-dark text-light border-0 rounded-3 p-3 mb-4 shadow-sm" style="background-color: #2b2d31 !important;">
+            <p class="card-text mb-2 fs-6">
+                Add an opening-date picker for shared memory boxes.(Est:1 hr Act:)
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+                <i class="bi bi-eye text-secondary fs-5"></i>
+                <span class="badge rounded-circle bg-primary d-flex align-items-center justify-content-center p-0" style="width: 32px; height: 32px; font-size: 0.8rem;">AM</span>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm p-4">
+            <h2 class="h4 mb-3 text-primary"><i class="bi bi-calendar-event me-2"></i>Set Time Capsule Unlock Date</h2>
+            <p class="text-muted small">Choose the exact future date when this time capsule will open for the recipient.</p>
+
+            <form>
+                <div class="mb-4">
+                    <label for="unlockDate" class="form-label fw-bold">Select Date & Time</label>
+                    <input type="datetime-local" class="form-control form-control-lg" id="unlockDate" required>
+                </div>
+
+                <div class="alert alert-info d-flex align-items-center gap-2 mb-4">
+                    <i class="bi bi-clock-history fs-4"></i>
+                    <div>
+                        <strong>Countdown Preview:</strong><br>
+                        <span class="small">Capsule will remain locked for approximately 365 days.</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
+                    <i class="bi bi-check-circle me-1"></i> Save Unlock Date
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+
+    <!-- Link to scripts of your own -->
+    <script type="module" src="./src/main.js"></script>
+
+</body>
+
+</html>
