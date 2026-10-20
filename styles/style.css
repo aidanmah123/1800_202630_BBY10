@@ -6,6 +6,8 @@ body {
 .navbar {
     padding: 20px;
     background-color: #f3eadf;
+    display: flex;
+    gap: 25px;
 }
 
 .navbar a {
@@ -18,7 +20,7 @@ body {
     text-decoration: underline;
 }
 
-.btn-primary, .btn-outline-primary{
+.btn.login-button, .btn-primary, .btn-outline-primary{
     margin-top: 50px;
     padding: 20px;
     background: #00b36b;
