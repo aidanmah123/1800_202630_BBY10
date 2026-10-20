@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create Video - Time Capsule</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="./box-creation.html">← Back</a>
+        </nav>
+    </header>
+
+    <main class="video-container">
+        <h1>New Video Box</h1>
+        <p>Create a video memory for your future self.</p>
+
+        <form id="videoForm">
+            <label for="videoTitle">Title:</label>
+            <input
+                type="text"
+                id="videoTitle"
+                placeholder="Enter a title"
+                required>
+
+            <label for="videoMessage">Your Message:</label>
+            <textarea
+                id="videoMessage"
+                placeholder="Write your message here..."
+                rows="6"
+                required></textarea>
+
+            <label for="videoUpload">Upload Video:</label>
+            <input
+                type="file"
+                id="videoUpload"
+                accept="video/*"
+                required>
+
+            <button type="submit">Done</button>
+        </form>
+
+        <p id="videoStatus" role="status"></p>
+    </main>
+
+    <script type="module" src="./src/video.js"></script>
+</body>
+
+</html>

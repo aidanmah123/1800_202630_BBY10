@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create Letter - Time Capsule</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="./box-creation.html">← Back</a>
+        </nav>
+    </header>
+
+    <main class="letter-container">
+        <h1>Create a Letter</h1>
+        <p>Write a message for your future self.</p>
+
+        <form id="letterForm">
+
+            <label for="letterTitle">Letter Title:</label>
+            <input
+                type="text"
+                id="letterTitle"
+                placeholder="Enter a title"
+                required>
+
+            <label for="letterMessage">Your Message:</label>
+            <textarea
+                id="letterMessage"
+                placeholder="Write your letter here..."
+                rows="8"
+                required></textarea>
+
+            <label for="letterUpload">Upload File:</label>
+            <input
+                type="file"
+                id="letterUpload">
+
+            <button type="submit">Done</button>
+
+        </form>
+
+        <p id="letterStatus" role="status"></p>
+    </main>
+
+    <script type="module" src="./src/letter.js"></script>
+</body>
+
+</html>
