@@ -29,6 +29,6 @@ videoForm.addEventListener("submit", function (event) {
     console.log("Video message:", message);
     console.log("Selected video:", video.name);
 
-    videoStatus.textContent =
-        "Video Box ready!";
+   
+    window.location.href = "./myvideo.html";
 });

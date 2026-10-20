@@ -22,6 +22,5 @@ letterForm.addEventListener("submit", function (event) {
         console.log("Attached file:", file.name);
     }
 
-    letterStatus.textContent =
-        "Letter ready! ";
+    window.location.href = "./myletter.html";
 });
