@@ -11,6 +11,7 @@
 // Import Firebase SDK modules (using Firebase v9 modular syntax)
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 // ---------------------------------------------------------
 // Read Firebase configuration from Vite environment variables.
@@ -24,14 +25,21 @@ import { getAuth } from "firebase/auth";
 // ⚠️ Note: Vite only exposes environment variables that start with "VITE_"
 // ---------------------------------------------------------
 const firebaseConfig = {
-  apiKey: "AIzaSyCrTsbSzKWa84PNlwwfOSgSzaisoo6NY4w",
-  authDomain: "bby10-40823.firebaseapp.com",
-  projectId: "bby10-40823",
-  storageBucket: "bby10-40823.firebasestorage.app",
-  messagingSenderId: "706035276588",
-  appId: "1:706035276588:web:1e387e936d5c1596efaa89"
-};
+ apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,};
+  
+for (const key of ["apiKey", "authDomain", "projectId", "appId"]) {
+  if (!firebaseConfig[key]) {
+    throw new Error(`Missing Firebase setting: ${key}. Fill in .env and restart Vite.`);
+  }
+}
 
+
+  
 // ---------------------------------------------------------
 // Initialize the Firebase app instance.
 // This sets up the Firebase connection for your web app.
@@ -44,4 +52,5 @@ const app = initializeApp(firebaseConfig);
 // or signout operations (that's why we export it).
 // ---------------------------------------------------------
 export const auth = getAuth(app);
+export const db = getFirestore(app);
 export { app };
