@@ -8,6 +8,7 @@
 
 // Import the initialized Firebase Authentication object
 import { auth } from "/src/firebaseConfig.js";
+import { ensureUserProfile } from "./userProfile.js";
 
 // Import specific functions from the Firebase Auth SDK
 import {
@@ -18,6 +19,17 @@ import {
   signOut,
 } from "firebase/auth";
 
+async function saveProfileAfterAuth(user) {
+  try {
+    await ensureUserProfile(user);
+  } catch (cause) {
+    const error = new Error("Signed in, but the database profile could not be saved.");
+    error.code = "database/profile-unavailable";
+    error.cause = cause;
+    console.error("Profile write failed; Authentication succeeded:", cause);
+    throw error;
+  }
+}
 // -------------------------------------------------------------
 // loginUser(email, password)
 // -------------------------------------------------------------
@@ -32,7 +44,9 @@ import {
 //   await loginUser("user@example.com", "password123");
 // -------------------------------------------------------------
 export async function loginUser(email, password) {
-  return signInWithEmailAndPassword(auth, email, password);
+  const credential = await signInWithEmailAndPassword(auth, email, password);
+  await saveProfileAfterAuth(credential.user);
+  return credential;
 }
 
 // -------------------------------------------------------------
@@ -51,9 +65,10 @@ export async function loginUser(email, password) {
 //   const user = await signupUser("Alice", "alice@email.com", "secret");
 // -------------------------------------------------------------
 export async function signupUser(name, email, password) {
-  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-  await updateProfile(userCredential.user, { displayName: name });
-  return userCredential.user;
+  const credential = await createUserWithEmailAndPassword(auth, email, password);
+  await updateProfile(credential.user, { displayName: name });
+  await saveProfileAfterAuth(credential.user);
+  return credential.user;
 }
 
 // -------------------------------------------------------------
@@ -86,11 +101,12 @@ export async function logoutUser() {
 //   checkAuthState();
 // -------------------------------------------------------------
 export function checkAuthState() {
-  onAuthStateChanged(auth, (user) => {
+  return onAuthStateChanged(auth, (user) => {
     if (window.location.pathname.endsWith("main.html")) {
       if (user) {
         const displayName = user.displayName || user.email;
-        $("#welcomeMessage").text(`Hello, ${displayName}!`);
+        const welcome = document.getElementById("welcomeMessage");
+        if (welcome) welcome.textContent = `Hello, ${displayName}!`;
       } else {
         window.location.href = "index.html";
       }
@@ -126,6 +142,9 @@ export function authErrorMessage(error) {
     "auth/weak-password": "Password too weak (min 6 characters).",
     "auth/missing-password": "Password cannot be empty.",
     "auth/network-request-failed": "Network error. Try again.",
+    "database/profile-unavailable":
+      "Your account is signed in, but your database profile could not be saved. Check Firestore setup and Rules, then log out and log in again. Do not register again.",
+
   };
 
   return map[code] || "Something went wrong. Please try again.";
