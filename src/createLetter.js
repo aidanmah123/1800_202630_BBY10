@@ -15,7 +15,10 @@ onAuthReady(function (user) {
 async function saveLetter(event) {
     event.preventDefault();
 
-    if (!currentUser) return;
+    if (!currentUser) {
+        alert("Please wait a moment while we verify your login.");
+        return;
+    }
 
     const newLetter = {
         title: document.getElementById("letterTitle").value,
