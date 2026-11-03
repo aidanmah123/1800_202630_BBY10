@@ -5,7 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Videos | Memories Box</title>
 </head>
-<body>
-    
+<body class="bg-light">
+    <main class="container py-5">
+        <a href="./box-creation.html"
+           class="btn btn-outline-secondary mb-4">
+            Back
+        </a>
+
+        <h1 class="mb-4">My Video Capsules</h1>
+
+        <p id="videoStatus" class="text-secondary" role="status">
+            Loading...
+        </p>
+
+        <div id="videoList" class="row g-4"></div>
+    </main>
+
+    <script type="module" src="./src/myvideo.js"></script>
 </body>
 </html>
