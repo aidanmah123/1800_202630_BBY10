@@ -1,18 +1,39 @@
-import { db } from "./firebaseConfig.js";
 import { onAuthReady } from "./authentication.js";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+
+const titleInput = document.getElementById("letterTitle");
+const messageInput = document.getElementById("letterMessage");
+const letterForm = document.getElementById("letterForm");
+const photoInput = document.getElementById("letterUpload");
 
 let currentUser = null;
 
 onAuthReady(function (user) {
+    currentUser = user;
+
     if (!user) {
-        location.href = "index.html";
+        location.href = "./index.html";
         return;
     }
-    currentUser = user;
+
+    const draftKey = `letterDraft:${user.uid}`;
+    const draft = JSON.parse(sessionStorage.getItem(draftKey));
+
+    if (draft) {
+        titleInput.value = draft.title;
+        messageInput.value = draft.content;
+    }
 });
 
-async function saveLetter(event) {
+function readPhoto(photo) {
+    return new Promise(function (resolve, reject) {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(reader.error);
+        reader.readAsDataURL(photo);
+    });
+}
+
+async function goToCalendar(event) {
     event.preventDefault();
 
     if (!currentUser) {
@@ -20,21 +41,46 @@ async function saveLetter(event) {
         return;
     }
 
-    const newLetter = {
-        title: document.getElementById("letterTitle").value,
-        message: document.getElementById("letterMessage").value,
-        image: document.getElementById("letterUpload").value,
-        owner: currentUser.uid,
-        ownerName: currentUser.displayName || currentUser.email,
-        last_updated: serverTimestamp()
-    };
+    const title = titleInput.value.trim();
+    const content = messageInput.value.trim();
+    const photo = photoInput.files[0];
+
+    if (!title || !content) {
+        alert("Please enter a title and message.");
+        return;
+    }
+
+    if (photo) {
+        const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+
+        if (!allowedTypes.includes(photo.type) || photo.size > 512 * 1024) {
+            alert("Please choose a JPG, PNG, or WebP photo up to 512 KB.");
+            return;
+        }
+    }
+
+    const draftKey = `letterDraft:${currentUser.uid}`;
+    const draft = JSON.parse(sessionStorage.getItem(draftKey)) ?? {};
+
+    draft.title = title;
+    draft.content = content;
+
 
     try {
-        await addDoc(collection(db, "Capsules"), newLetter);
-        location.href = "myletter.html";
+        if (photo) {
+            draft.photo = await readPhoto(photo);
+            draft.photoName = photo.name;
+            draft.photoId = crypto.randomUUID();
+        }
+
+        sessionStorage.setItem(draftKey, JSON.stringify(draft));
+        location.href = "./calendar.html";
+
     } catch (error) {
-        alert(`Error saving hike:\n${error.code || ""}\n${error.message || error}`);
+        console.error("Failed to save the draft", error);
+        alert("Could not save the draft. Please try again.");
     }
+
 }
 
-document.getElementById("letterForm").addEventListener("submit", saveLetter);
+letterForm.addEventListener("submit", goToCalendar);
