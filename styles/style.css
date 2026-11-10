@@ -319,3 +319,6 @@ site-navbar.auth-page-navbar #signOutBtn {
     height: 36px;
     object-fit: contain;
 }
+site-navbar.auth-page-navbar .navbar-brand > span {
+    display: none;
+}
