@@ -3,9 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Capsules | Memories Box</title>
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    
+    <header>
+        <nav class="navbar">
+            <a href="./index.html">Home</a>
+            <a href="./box-creation.html">Create a Memory</a>
+        </nav>
+    </header>
+
+    <main class="capsules-container">
+        <h1>My Capsules</h1>
+        <p>Letters you have created for recipients.</p>
+        <p id="capsuleStatus" role="status" aria-live="polite">Loading your letters...</p>
+        <ul id="capsuleList" class="capsule-list" aria-label="Your letters"></ul>
+    </main>
+
+    <script type="module" src="./src/myLetters.js"></script>
 </body>
 </html>

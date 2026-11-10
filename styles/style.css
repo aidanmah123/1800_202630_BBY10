@@ -29,3 +29,39 @@ body {
     font-size: 20px;
     font-weight: 700;
 }
+
+.capsules-container {
+    max-width: 760px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.capsule-list {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.capsule-card {
+    padding: 20px;
+    border: 1px solid #e3d8ca;
+    border-radius: 8px;
+    background: #fffdf9;
+    overflow-wrap: anywhere;
+}
+
+.capsule-card h2 {
+    margin: 0 0 8px;
+}
+
+.capsule-recipient {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.capsule-message {
+    margin-bottom: 0;
+    white-space: pre-wrap;
+}
