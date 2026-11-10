@@ -1,48 +1,9 @@
-// import { db } from "./firebaseConfig.js";
-// import { onAuthReady } from "./authentication.js";
-// import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-
-// let currentUser = null;
-
-// onAuthReady(function (user) {
-//     if (!user) {
-//         location.href = "index.html";
-//         return;
-//     }
-//     currentUser = user;
-// });
-
-// async function saveLetter(event) {
-//     event.preventDefault();
-
-//     if (!currentUser) {
-//         alert("Please wait a moment while we verify your login.");
-//         return;
-//     }
-
-//     const newLetter = {
-//         title: document.getElementById("letterTitle").value,
-//         message: document.getElementById("letterMessage").value,
-//         image: document.getElementById("letterUpload").value,
-//         owner: currentUser.uid,
-//         ownerName: currentUser.displayName || currentUser.email,
-//         last_updated: serverTimestamp()
-//     };
-
-//     try {
-//         await addDoc(collection(db, "Capsules"), newLetter);
-//         location.href = "myletter.html";
-//     } catch (error) {
-//         alert(`Error saving hike:\n${error.code || ""}\n${error.message || error}`);
-//     }
-// }
-
-// document.getElementById("letterForm").addEventListener("submit", saveLetter);
 import { onAuthReady } from "./authentication.js";
 
 const titleInput = document.getElementById("letterTitle");
 const messageInput = document.getElementById("letterMessage");
 const letterForm = document.getElementById("letterForm");
+const photoInput = document.getElementById("letterUpload");
 
 let currentUser = null;
 
@@ -63,7 +24,16 @@ onAuthReady(function (user) {
     }
 });
 
-function goToCalendar(event) {
+function readPhoto(photo) {
+    return new Promise(function (resolve, reject) {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(reader.error);
+        reader.readAsDataURL(photo);
+    });
+}
+
+async function goToCalendar(event) {
     event.preventDefault();
 
     if (!currentUser) {
@@ -73,10 +43,20 @@ function goToCalendar(event) {
 
     const title = titleInput.value.trim();
     const content = messageInput.value.trim();
+    const photo = photoInput.files[0];
 
     if (!title || !content) {
         alert("Please enter a title and message.");
         return;
+    }
+
+    if (photo) {
+        const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+
+        if (!allowedTypes.includes(photo.type) || photo.size > 512 * 1024) {
+            alert("Please choose a JPG, PNG, or WebP photo up to 512 KB.");
+            return;
+        }
     }
 
     const draftKey = `letterDraft:${currentUser.uid}`;
@@ -85,15 +65,22 @@ function goToCalendar(event) {
     draft.title = title;
     draft.content = content;
 
-    const photoInput = document.getElementById("letterUpload");
-    const photo = photoInput.files[0];
 
-    if (photo) {
-        draft.photoName = photo.name;
+    try {
+        if (photo) {
+            draft.photo = await readPhoto(photo);
+            draft.photoName = photo.name;
+            draft.photoId = crypto.randomUUID();
+        }
+
+        sessionStorage.setItem(draftKey, JSON.stringify(draft));
+        location.href = "./calendar.html";
+
+    } catch (error) {
+        console.error("Failed to save the draft", error);
+        alert("Could not save the draft. Please try again.");
     }
 
-    sessionStorage.setItem(draftKey, JSON.stringify(draft));
-    location.href = "./calendar.html";
 }
 
 letterForm.addEventListener("submit", goToCalendar);

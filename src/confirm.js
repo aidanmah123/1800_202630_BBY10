@@ -1,6 +1,6 @@
 import { onAuthReady } from "./authentication.js";
 import { db } from "./firebaseConfig.js";
-import { addDoc, collection, serverTimestamp, Timestamp } from "firebase/firestore";
+import { addDoc, Bytes, collection, serverTimestamp, Timestamp } from "firebase/firestore";
 
 onAuthReady(function (user) {
     if (!user) {
@@ -26,7 +26,7 @@ onAuthReady(function (user) {
     document.getElementById("confirmEmail").textContent = draft.recipientEmail;
     document.getElementById("confirmUnlockAt").textContent =
         new Date(draft.unlockAt).toLocaleString();
-        
+
     const media = document.getElementById("confirmMedia");
 
     if (draft.photoName) {
@@ -59,8 +59,29 @@ onAuthReady(function (user) {
             createdAt: serverTimestamp(),
             ownerId: user.uid
         };
-
+        //I'm not realized this from here//
         try {
+            if (draft.photo || draft.photoName) {
+                const image = /^data:(image\/(?:jpeg|png|webp));base64,(.+)$/.exec(draft.photo);
+
+                if (!image) {
+                    throw new Error("Please go back and select the photo again.");
+                }
+
+                const data = Bytes.fromBase64String(image[2]);
+
+                if (data.toUint8Array().length > 512 * 1024) {
+                    throw new Error("Please select a photo up to 512 KB.");
+                }
+
+                capsule.photo = {
+                    name: draft.photoName ?? "photo",
+                    contentType: image[1],
+                    data
+                };
+            }
+            //to here
+
             await addDoc(collection(db, "Capsules"), capsule);
         } catch (error) {
             console.error("Failed to save capsule", error);
