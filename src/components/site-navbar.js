@@ -12,8 +12,8 @@ class SiteNavbar extends HTMLElement {
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/">
-                        
-                        My Memories
+                        <img class="brand-logo" src="./images/logo.png" alt="">
+                        <span>Time Capsule</span>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
