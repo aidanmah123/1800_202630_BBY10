@@ -6,16 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Box Creation - Time Capsule</title>
+    <script type="module" src="./src/app.js"></script>
+    <script type="module" src="./src/components/site-navbar.js"></script>
+    
+
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 
-<body>
-    <header>
-        <nav class="navbar">
-            <a href="#">Home</a>
-            <a href="./myletter.html">My Capsules</a>
-        </nav>
-    </header>
+<body class="box-page">
+    <site-navbar></site-navbar>
 
     <main class="box-creation">
         <h1>Create a Memory</h1>
@@ -27,13 +26,13 @@
                 <p>Write and save your memories</p>
             </a>
 
-            <a href="#" class="box-option">
+            <a href="./create-video.html" class="box-option">
                 <h2>Videos</h2>
                 <p>Save video memories</p>
             </a>
         </div>
     </main>
 
-</body>
 
+</body>
 </html>

@@ -38,6 +38,11 @@ function initAuthUI() {
         el.classList.toggle('d-none', !visible);
     }
 
+    if (window.location.hash === '#signup') {
+    setVisible(loginView, false);
+    setVisible(signupView, true);
+    }
+
     // Show error message with accessibility and auto-hide
     let errorTimeout;
     function showError(msg) {
