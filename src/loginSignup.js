@@ -30,12 +30,17 @@ function initAuthUI() {
     const toLoginBtn = document.getElementById('toLogin');
     const loginForm = document.getElementById('loginForm');
     const signupForm = document.getElementById('signupForm');
-    const redirectUrl = 'index.html';
+    const redirectUrl = 'box-creation.html';
 
     // --- Helper Functions ---
     // Toggle element visibility
     function setVisible(el, visible) {
         el.classList.toggle('d-none', !visible);
+    }
+
+    if (window.location.hash === '#signup') {
+    setVisible(loginView, false);
+    setVisible(signupView, true);
     }
 
     // Show error message with accessibility and auto-hide

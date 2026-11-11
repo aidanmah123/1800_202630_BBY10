@@ -16,6 +16,7 @@ function renderLetters(snapshot) {
 
     const letters = snapshot.docs
         .map((letterSnapshot) => letterSnapshot.data())
+        .filter((capsule) => capsule.type === "letter")
         .sort((a, b) => (b.createdAt?.toMillis?.() || 0) - (a.createdAt?.toMillis?.() || 0));
 
     if (letters.length === 0) {
@@ -36,11 +37,18 @@ function renderLetters(snapshot) {
         recipient.className = "capsule-recipient";
         recipient.textContent = `To: ${letter.recipientEmail || "Unknown recipient"}`;
 
-        const message = document.createElement("p");
-        message.className = "capsule-message";
-        message.textContent = letter.message || "";
+        const content = document.createElement("p");
+        content.className = "capsule-message";
+        content.textContent = letter.content || "";
 
-        item.append(title, recipient, message);
+        const unlockDate = document.createElement("p");
+        unlockDate.className = "capsule-unlock-date";
+        const unlockAt = letter.unlockAt?.toDate?.();
+        unlockDate.textContent = unlockAt
+            ? `Unlocks: ${unlockAt.toLocaleString()}`
+            : "No unlock date set.";
+
+        item.append(title, recipient, content, unlockDate);
         capsuleList.append(item);
     }
 }
@@ -61,8 +69,8 @@ onAuthReady((user) => {
 
     capsuleStatus.textContent = "Loading your letters...";
     const lettersQuery = query(
-        collection(db, "letters"),
-        where("senderUid", "==", user.uid),
+        collection(db, "Capsules"),
+        where("ownerId", "==", user.uid),
     );
 
     stopListening = onSnapshot(
