@@ -17,12 +17,19 @@
 
     <main class="letter-container">
         <h1>Create a Letter</h1>
-        <p>Write a message for yourself or somebody else in the future.</p>
+        <p>Write a message for someone and save it as a capsule.</p>
 
         <form id="letterForm">
 
             <label for="letterTitle">Letter Title:</label>
             <input type="text" id="letterTitle" placeholder="Enter a title" required>
+
+            <label for="letterRecipient">Recipient Email:</label>
+            <input
+                type="email"
+                id="letterRecipient"
+                placeholder="recipient@example.com"
+                required>
 
             <label for="letterMessage">Your Message:</label>
             <textarea id="letterMessage" placeholder="Write your letter here..." rows="8" required></textarea>
