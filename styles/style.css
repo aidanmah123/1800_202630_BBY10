@@ -322,3 +322,104 @@ site-navbar.auth-page-navbar #signOutBtn {
 site-navbar.auth-page-navbar .navbar-brand > span {
     display: none;
 }
+body:has(#calendarForm) {
+    min-height: 100vh;
+    background: #f7f2eb;
+    color: #333;
+}
+
+body:has(#calendarForm) .card {
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 8px 28px rgba(45, 35, 20, 0.12) !important;
+}
+
+body:has(#calendarForm) h2 {
+    color: #245c49 !important;
+}
+
+body:has(#calendarForm) #calendarForm label {
+    color: #333;
+    font-weight: 700;
+}
+
+body:has(#calendarForm) #calendarForm .form-control {
+    border-color: #cfc8bd;
+    border-radius: 8px;
+}
+
+body:has(#calendarForm) #calendarForm .form-control:focus {
+    border-color: #00b36b;
+    box-shadow: 0 0 0 3px rgba(0, 179, 107, 0.2);
+}
+
+body:has(#calendarForm) #calendarForm button[type="submit"] {
+    margin-top: 0;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 8px;
+    background: #00b36b;
+    color: #fff;
+    font-size: 16px;
+}
+
+body:has(#calendarForm) #calendarForm button[type="submit"]:hover {
+    background: #009e5e;
+}
+body:has(#lockCapsule) {
+    min-height: 100vh;
+    background: #f7f2eb;
+    color: #333;
+}
+
+body:has(#lockCapsule) > .card {
+    box-sizing: border-box;
+    width: min(100% - 32px, 680px);
+    margin: 48px auto;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 8px 28px rgba(45, 35, 20, 0.12);
+}
+
+body:has(#lockCapsule) > .card > .card {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none !important;
+}
+
+body:has(#lockCapsule) h2 {
+    color: #245c49;
+}
+
+body:has(#lockCapsule) .bg-light {
+    border-color: #e4ded4 !important;
+    border-radius: 12px;
+    background: #fbfaf7 !important;
+}
+
+body:has(#lockCapsule) #confirmContent {
+    overflow-wrap: anywhere;
+}
+
+body:has(#lockCapsule) .d-flex.gap-2 > .btn {
+    margin-top: 0;
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+body:has(#lockCapsule) #lockCapsule {
+    border-color: #00a261;
+    background: #00b36b;
+    font-weight: 700;
+}
+
+body:has(#lockCapsule) #lockCapsule:hover:not(:disabled) {
+    border-color: #008f56;
+    background: #009e5e;
+}
+
+@media (max-width: 600px) {
+    body:has(#lockCapsule) > .card {
+        margin: 24px auto;
+    }
+}

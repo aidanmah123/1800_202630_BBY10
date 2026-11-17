@@ -10,13 +10,16 @@ class SiteNavbar extends HTMLElement {
     renderNavbar() {
         this.innerHTML = `
             <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/">
-                        <img class="brand-logo" src="./images/logo.png" alt="">
-                        <span>Time Capsule</span>
-                    </a>
+            <div class="container-fluid">
+            <div class="navbar-brand">
+        <img
+            class="brand-logo"
+            src="./images/timecapsulelogo.jpg"
+            alt="Time Capsule Logo">
+        
+    </div>
+ <button
 
-                    <button
                         class="navbar-toggler"
                         type="button"
                         data-bs-toggle="collapse"
