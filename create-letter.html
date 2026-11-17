@@ -22,11 +22,7 @@
         <form id="letterForm">
 
             <label for="letterTitle">Letter Title:</label>
-            <input
-                type="text"
-                id="letterTitle"
-                placeholder="Enter a title"
-                required>
+            <input type="text" id="letterTitle" placeholder="Enter a title" required>
 
             <label for="letterRecipient">Recipient Email:</label>
             <input
@@ -36,17 +32,14 @@
                 required>
 
             <label for="letterMessage">Your Message:</label>
-            <textarea
-                id="letterMessage"
-                placeholder="Write your letter here..."
-                rows="8"
-                required></textarea>
+            <textarea id="letterMessage" placeholder="Write your letter here..." rows="8" required></textarea>
 
             <label for="letterUpload">Upload Image:</label>
-            <input
-                type="file"
-                id="letterUpload">
-
+            <input type="file" id="letterUpload" accept="image/jpeg,image/png,image/webp">
+            <p role="status">
+                <strong id="photoLabel">Photo:</strong>
+                <span id="photoNameDisplay">No photo selected.</span>
+            </p>
             <button type="submit">Create</button>
 
         </form>
@@ -56,4 +49,5 @@
 
     <script type="module" src="./src/createLetter.js"></script>
 </body>
+
 </html>
