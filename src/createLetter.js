@@ -4,6 +4,32 @@ const titleInput = document.getElementById("letterTitle");
 const messageInput = document.getElementById("letterMessage");
 const letterForm = document.getElementById("letterForm");
 const photoInput = document.getElementById("letterUpload");
+const photoNameDisplay = document.getElementById("photoNameDisplay");
+const photoLabel = document.getElementById("photoLabel");
+
+let savedPhotoName = "";
+
+function updatePhotoName() {
+    const selectedPhoto = photoInput.files[0];
+
+    if (selectedPhoto) {
+        photoLabel.textContent = "Selected photo:";
+        photoNameDisplay.textContent = selectedPhoto.name;
+    } else if (savedPhotoName) {
+        photoLabel.textContent = "Saved photo:";
+        photoNameDisplay.textContent = savedPhotoName;
+    } else {
+        photoLabel.textContent = "Photo:";
+        photoNameDisplay.textContent = "No photo selected.";
+    }
+}
+
+photoInput.addEventListener("change", updatePhotoName);
+
+
+
+
+
 
 let currentUser = null;
 
@@ -21,7 +47,9 @@ onAuthReady(function (user) {
     if (draft) {
         titleInput.value = draft.title;
         messageInput.value = draft.content;
+        savedPhotoName = draft.photoName ?? "";
     }
+    updatePhotoName();
 });
 
 function readPhoto(photo) {
