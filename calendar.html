@@ -27,21 +27,18 @@
                 <div class="col-2">
                     <a href="./create-letter.html" class="btn btn-light text-primary rounded-circle fs-3 lh-1 p-2"
                         aria-label="Back to letter">
-                        <span aria-hidden="true">←</span>
+                        <div aria-hidden="true">←</div>
                     </a>
                 </div>
 
                 <h2 class="col-8 h4 text-center text-primary mb-0">
-                    Set Time Capsule Unlock Date
+                    Set Time Capsule Unlock Date & Recipient
                 </h2>
 
-                <div class="col-2"></div>
+                
             </div>
 
-
-
-
-            <p class="text-muted small">Choose the exact future date when this time capsule will open for the recipient.
+            <p class="text-muted small">Choose the recipient and the future date when this time capsule will be open.
             </p>
 
             <form id="calendarForm">
@@ -53,27 +50,17 @@
 
                 <div class="mb-4">
                     <label for="recipientEmail" class="form-label fw-bold">
-                        Recipient Email
+                        Recipient Email (Or Your Email)
                     </label>
                     <input type="email" id="recipientEmail" class="form-control" placeholder="name@example.com"
                         required>
-                </div>
-
-
-
-                <div class="alert alert-info d-flex align-items-center gap-2 mb-4">
-                    <i class="bi bi-clock-history fs-4"></i>
-                    <div>
-                        <strong>Countdown Preview:</strong><br>
-                        <span class="small">Capsule will remain locked for approximately 365 days.</span>
-                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
                     <i class="bi bi-check-circle me-1"></i> Save Unlock Date
                 </button>
             </form>
-        </div>
+        </div> 
     </section>
 
     <!---------------------------------------------->
