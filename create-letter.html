@@ -11,35 +11,35 @@
 <body class="letter-page">
     <header>
         <nav class="navbar">
-            <a href="./box-creation.html">← Back</a>
+            <a href="./box-creation.html">Back</a>
         </nav>
     </header>
 
     <main class="letter-container">
         <h1>Create a Letter</h1>
-        <p>Write a message for your future self.</p>
+        <p>Write a message for someone and save it as a capsule.</p>
 
         <form id="letterForm">
 
             <label for="letterTitle">Letter Title:</label>
+            <input type="text" id="letterTitle" placeholder="Enter a title" required>
+
+            <label for="letterRecipient">Recipient Email:</label>
             <input
-                type="text"
-                id="letterTitle"
-                placeholder="Enter a title"
+                type="email"
+                id="letterRecipient"
+                placeholder="recipient@example.com"
                 required>
 
             <label for="letterMessage">Your Message:</label>
-            <textarea
-                id="letterMessage"
-                placeholder="Write your letter here..."
-                rows="8"
-                required></textarea>
+            <textarea id="letterMessage" placeholder="Write your letter here..." rows="8" required></textarea>
 
             <label for="letterUpload">Upload Image:</label>
-            <input
-                type="file"
-                id="letterUpload">
-
+            <input type="file" id="letterUpload" accept="image/jpeg,image/png,image/webp">
+            <p role="status">
+                <strong id="photoLabel">Photo:</strong>
+                <span id="photoNameDisplay">No photo selected.</span>
+            </p>
             <button type="submit">Create</button>
 
         </form>
@@ -49,4 +49,5 @@
 
     <script type="module" src="./src/createLetter.js"></script>
 </body>
+
 </html>
