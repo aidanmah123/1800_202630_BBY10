@@ -14,9 +14,8 @@ class SiteNavbar extends HTMLElement {
             <div class="navbar-brand">
         <img
             class="brand-logo"
-            src="./images/timecapsulelogo.jpg"
+            src="./images/timecapsulelogo.png"
             alt="Time Capsule Logo"/>
-        
     </div>
  <button
 
@@ -32,6 +31,9 @@ class SiteNavbar extends HTMLElement {
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/box-creation.html">Create a Capsule</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/myletter.html">Created/Sent Capsules</a>
                             </li>

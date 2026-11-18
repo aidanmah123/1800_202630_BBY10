@@ -90,7 +90,7 @@ onAuthReady(function (user) {
             return;
         }
 
-        sessionStorage.removeItem(draftKey);
+        sessionStorage.removeItem(draft);
         location.replace("./myletter.html");
     };
 });
