@@ -33,7 +33,10 @@ class SiteNavbar extends HTMLElement {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="/myletter.html">My Capsules</a>
+                                <a class="nav-link" href="/myletter.html">Created/Sent Capsules</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/recievedletter.html">Recieved Capsules</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/">Logout</a>
