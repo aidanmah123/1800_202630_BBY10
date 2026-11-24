@@ -357,6 +357,7 @@ site-navbar.auth-page-navbar #signOutBtn {
     width: 36px;
     height: 36px;
     object-fit: contain;
+    background-color: transparent;
 }
 
 site-navbar.auth-page-navbar .navbar-brand>span {
@@ -464,4 +465,16 @@ body:has(#lockCapsule) #lockCapsule:hover:not(:disabled) {
     body:has(#lockCapsule)>.card {
         margin: 24px auto;
     }
+}
+.video-container h1,
+.video-container > p:not(.construction-notice),
+#videoForm,
+#videoStatus {
+    display: none;
+}
+
+.construction-notice {
+    margin: 15vh auto 0;
+    text-align: center;
+    font-size: 2rem;
 }
