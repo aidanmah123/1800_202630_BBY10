@@ -55,6 +55,7 @@ onAuthReady(function (user) {
             title: draft.title,
             content: draft.content,
             recipientEmail: draft.recipientEmail,
+            senderEmail: user.email,
             unlockAt: Timestamp.fromDate(unlockDate),
             createdAt: serverTimestamp(),
             ownerId: user.uid
@@ -91,6 +92,7 @@ onAuthReady(function (user) {
         }
 
         sessionStorage.removeItem(draft);
+        sessionStorage.removeItem(draftKey);
         location.replace("./myletter.html");
     };
 });
