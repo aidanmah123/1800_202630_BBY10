@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Capsules | Memories Box</title>
+    <title>Received Capsules | Memories Box</title>
     <link rel="stylesheet" href="./styles/style.css">
     <script type="module" src="./src/app.js"></script>
     <script type="module" src="./src/components/site-navbar.js"></script>
 </head>
 <body>
     <site-navbar></site-navbar>
-
     <main class="capsules-container">
-        <h1>My Capsules</h1>
-        <p>Letters you have created for recipients.</p>
-        <p id="capsuleStatus" role="status" aria-live="polite">Loading your letters...</p>
-        <ul id="capsuleList" class="capsule-list" aria-label="Your letters"></ul>
+        <h1>Received Capsules</h1>
+        <p id="capsuleStatus" role="status" aria-live="polite">Loading received letters...</p>
+        <ul id="capsuleList" class="capsule-list" aria-label="Received letters"></ul>
     </main>
-
     <script type="module" src="./src/recieved.js"></script>
 </body>
 </html>
