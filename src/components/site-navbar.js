@@ -13,8 +13,7 @@ class SiteNavbar extends HTMLElement {
         const navLinks = [
             { text: "Create a Capsule", href: "/box-creation.html" },
             { text: "Created/Sent Capsules", href: "/myletter.html" },
-            { text: "Recieved Capsules", href: "/recievedletter.html" },
-            { text: "Logout", href: "/" }
+            { text: "Recieved Capsules", href: "/recievedletter.html" }
         ];
 
         const linksHTML = navLinks.map(link => {
@@ -73,27 +72,17 @@ class SiteNavbar extends HTMLElement {
             if (user) {
                 authControls.innerHTML = `
                     <button
-                        class="btn btn-outline-light"
+                        class="btn btn-outline-dark"
                         id="signOutBtn"
                         type="button"
                         style="min-width: 80px;">
-                        Log out
+                        Log Out
                     </button>
                 `;
 
                 authControls
                     .querySelector("#signOutBtn")
                     .addEventListener("click", logoutUser);
-            } else {
-                authControls.innerHTML = `
-                    <a
-                        class="btn btn-outline-light"
-                        id="loginBtn"
-                        href="/login.html"
-                        style="min-width: 80px;">
-                        Log in
-                    </a>
-                `;
             }
         });
     }
