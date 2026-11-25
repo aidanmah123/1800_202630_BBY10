@@ -166,7 +166,7 @@ site-navbar.auth-page-navbar #signOutBtn {
     margin: 48px auto;
     padding: 36px;
     border-radius: 18px;
-    background: #fff;
+    background: #f7f2eb;
     box-shadow: 0 8px 28px rgba(45, 35, 20, 0.12);
 }
 
@@ -191,7 +191,7 @@ site-navbar.auth-page-navbar #signOutBtn {
     padding: 22px;
     border: 1px solid #ddd6ca;
     border-radius: 12px;
-    background: #fbfaf7;
+    background: #f7f2eb;
     color: inherit;
     text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
@@ -469,7 +469,7 @@ body:has(#lockCapsule) #lockCapsule:hover:not(:disabled) {
 
 
 :root {
-    --bg-color: #f5f2eb;
+    --bg-color: #f7f2eb;
     --nav-bg: #ebe5d9;
     --text-main: #333333;
     --text-muted: #666666;
@@ -543,7 +543,7 @@ body {
     font-size: 2rem;
     font-weight: 600;
     margin: 0 0 8px 0;
-    color: #1a1a1a;
+    color: #245c49;
 }
 
 .subtitle {
