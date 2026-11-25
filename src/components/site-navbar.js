@@ -8,17 +8,36 @@ class SiteNavbar extends HTMLElement {
     }
 
     renderNavbar() {
+        const currentPath = window.location.pathname;
+
+        const navLinks = [
+            { text: "Create a Capsule", href: "/box-creation.html" },
+            { text: "Created/Sent Capsules", href: "/myletter.html" },
+            { text: "Recieved Capsules", href: "/recievedletter.html" },
+            { text: "Logout", href: "/" }
+        ];
+
+        const linksHTML = navLinks.map(link => {
+            const isActive = currentPath === link.href || currentPath.endsWith(link.href);
+            const activeClass = isActive ? " active" : "";
+            
+            return `
+                <li class="nav-item">
+                    <a class="nav-link${activeClass}" href="${link.href}">${link.text}</a>
+                </li>
+            `;
+        }).join("");
+
         this.innerHTML = `
             <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container-fluid">
-            <div class="navbar-brand">
-        <img
-            class="brand-logo"
-            src="./images/timecapsulelogo.png"
-            alt="Time Capsule Logo"/>
-    </div>
- <button
-
+                <div class="container-fluid">
+                    <div class="navbar-brand">
+                        <img
+                            class="brand-logo"
+                            src="./images/timecapsulelogo.png"
+                            alt="Time Capsule Logo"/>
+                    </div>
+                    <button
                         class="navbar-toggler"
                         type="button"
                         data-bs-toggle="collapse"
@@ -31,19 +50,9 @@ class SiteNavbar extends HTMLElement {
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/box-creation.html">Create a Capsule</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/myletter.html">Created/Sent Capsules</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/recievedletter.html">Recieved Capsules</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Logout</a>
-                            </li>
+                            ${linksHTML}
                         </ul>
+                        <div id="authControls" class="d-flex"></div>
                     </div>
                 </div>
             </nav>
